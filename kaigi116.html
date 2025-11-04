@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akademi Rumah Araa — Website Pendidikan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root{--sky:#BEE7FF;--sky-2:#E6F8FF;--accent:#0d6efd}
+    body{background:linear-gradient(180deg,var(--sky-2),rgb(245, 244, 244));color:#023047}
+    .hero{background:linear-gradient(90deg,var(--sky),white);border-radius:18px}
+    .card-edu{border-radius:12px;box-shadow:0 6px 18px rgba(2,48,71,0.06)}
+    .btn-primary{background:var(--accent);border:none}
+    .profile-photo{width:150px;height:150px;object-fit:cover;border-radius:50%;border:6px solid white;box-shadow:0 6px 20px rgba(3,37,65,0.08)}
+    .decorative{opacity:0.3}
+    .search-box{position:relative}
+    .voice-btn,.cam-btn{position:absolute;right:46px;top:6px;border:none;background:transparent}
+    .cam-btn{right:8px}
+    footer{background:#85b1eb;padding:28px;border-top:1px solid #e6f2ff}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-transparent px-3 py-3">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Akademi Rumah Araa</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="#akses-belajar">Akses Belajar</a></li>
+        <li class="nav-item"><a class="nav-link" href="#perpustakaan">Perpustakaan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#berita">Berita</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
+        <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="container my-4">
+  <div class="p-4 hero d-flex flex-column flex-lg-row align-items-center gap-4">
+    <img src="ara39.jpg" alt="Foto Pendidikan" class="profile-photo ms-2">
+    <div>
+      <h1 class="mb-1">Akademi Rumah Araa</h1>
+      <p class="mb-1 text-muted">Tempat pembelajaran daring dan sumber daya untuk semua umur — lucu, memotivasi, dan penuh inspirasi.</p>
+      <p class="fw-semibold"> <span class="badge bg-white text-dark">Akademi Rumah Araa</span> <span class="badge bg-white text-dark">BiruLangit Learning</span> <span class="badge bg-white text-dark">Araa Learning Hub</span></p>
+      <div class="d-flex gap-2 mt-2">
+        <a href="#akses-belajar" class="btn btn-primary">Mulai Belajar</a>
+        <a href="#akses-belajar" class="btn btn-outline-primary">Coba Latihan Soal</a>
+        <a href="#perpustakaan" class="btn btn-outline-primary">Perpustakaan</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search with voice & camera -->
+  <div class="mt-4 container">
+    <div class="input-group search-box" style="max-width:820px">
+      <input id="searchInput" type="search" class="form-control form-control-lg" placeholder="Cari kursus, buku, atau berita...">
+      <button id="voiceBtn" class="voice-btn" title="Voice search" type="button"><i class="bi bi-mic-fill" style="font-size:1.25rem"></i></button>
+      <button id="camBtn" class="cam-btn" title="Camera search" type="button"><i class="bi bi-camera-fill" style="font-size:1.25rem"></i></button>
+      <button id="searchBtn" class="btn btn-primary">Cari</button>
+    </div>
+    <small class="text-muted">Klik ikon mikrofon untuk pencarian suara, ikon kamera untuk foto jawaban/penelusuran.</small>
+
+    <div id="cameraArea" class="mt-3 d-none">
+      <video id="video" autoplay playsinline style="max-width:320px;border-radius:8px"></video>
+      <div class="mt-2">
+        <button id="capture" class="btn btn-sm btn-primary">Ambil Foto</button>
+        <button id="closeCam" class="btn btn-sm btn-outline-secondary">Tutup</button>
+      </div>
+      <canvas id="snapshot" class="mt-2 d-block" style="max-width:320px"></canvas>
+    </div>
+  </div>
+</header>
+
+
+  <section id="akses-belajar" class="mb-5">
+    <h3>Akses Belajar</h3>
+    <p class="text-muted">Pilih jalur belajar sesuai tujuanmu — kursus singkat, program intensif, atau bimbingan privat.</p>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card p-3 card-edu">
+          <h5>Program Dasar</h5>
+          <p>Materi pembuka untuk pemula — 8 modul.</p>
+          <a href="#" class="btn btn-sm btn-primary">Lihat</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 card-edu">
+          <h5>Program Intensif</h5>
+          <p>Belajar cepat selama 6 minggu dengan mentor.</p>
+          <a href="#" class="btn btn-sm btn-primary">Daftar</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 card-edu">
+          <h5>Program Latihan Soal</h5>
+          <p>Belajar latihan latihan dari dasar dan sulit.</p>
+          <a href="#" class="btn btn-sm btn-primary">Daftar</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 card-edu">
+          <h5>Program Belajar otodidak</h5>
+          <p>Belajar otodidak dari link youtube</p>
+          <a href="#" class="btn btn-sm btn-primary">Tonton</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 card-edu">
+          <h5>Bimbingan Privat</h5>
+          <p>Sesi 1:1 sesuai kebutuhan peserta.</p>
+          <a href="#" class="btn btn-sm btn-primary">Hubungi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="perpustakaan" class="mb-5">
+    <h3>Perpustakaan Digital</h3>
+    <p class="text-muted">Koleksi buku yang bisa dibaca online atau diunduh. Kategori: Anak (Fabel & Dongeng), SMP, SMA, Dewasa.</p>
+    <div class="row g-3">
+      <!-- Sample book cards -->
+      <div class="col-md-3">
+        <div class="card card-edu p-2">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600&auto=format&fit=crop" class="card-img-top" style="height:160px;object-fit:cover">
+          <div class="card-body">
+            <h6>Buku: Dasar Literasi</h6>
+            <p class="mb-1 text-muted small">Pengarang: Ahmad Penulis</p>
+            <a href="#" class="stretched-link">Baca</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-edu p-2">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=600&auto=format&fit=crop" class="card-img-top" style="height:160px;object-fit:cover">
+          <div class="card-body">
+            <h6>Buku: Matematika Menyenangkan</h6>
+            <p class="mb-1 text-muted small">Pengarang: Bitti Guru</p>
+            <a href="#" class="stretched-link">Baca</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-edu p-2">
+          <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600&auto=format&fit=crop" class="card-img-top" style="height:160px;object-fit:cover">
+          <div class="card-body">
+            <h6>Buku: Literasi Digital</h6>
+            <p class="mb-1 text-muted small">Pengarang: zahra makkayla Mentor</p>
+            <a href="#" class="stretched-link">Baca</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-edu p-2">
+          <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=600&auto=format&fit=crop" class="card-img-top" style="height:160px;object-fit:cover">
+          <div class="card-body">
+            <h6>Buku: Keterampilan Hidup</h6>
+            <p class="mb-1 text-muted small">Pengarang: Danii Trainer</p>
+            <a href="#" class="stretched-link">Baca</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimoni" class="mb-5">
+    <h3>Testimoni</h3>
+    <div id="carouselTesti" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card p-3 card-edu">
+            <p class="mb-1">"Platform ini membantu saya memahami materi dengan cepat — materi mudah diikuti."</p>
+            <p class="small text-muted">— Rina, peserta Program Intensif</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card p-3 card-edu">
+            <p class="mb-1">"Perpustakaan digitalnya lengkap dan rapi. Sangat membantu untuk tugas sekolah."</p>
+            <p class="small text-muted">— Budi, Pelajar</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselTesti" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselTesti" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+    </div>
+  </section>
+
+  <section id="motivasi" class="mb-5">
+    <div class="p-4 card-edu">
+      <h4 class="mb-2">Kata-kata motivasi</h4>
+      <p class="lead">"Belajar bukan tentang seberapa cepat kamu sampai, tetapi seberapa teguh kamu melangkah. Bergabunglah dengan Akademi Biru Langit — tempat di mana rasa ingin tahu menjadi kekuatanmu."</p>
+    </div>
+  </section>
+
+  <section id="berita" class="mb-5">
+    <h3>Berita & Prestasi</h3>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card card-edu p-3">
+          <h6>Prestasi Siswa</h6>
+          <p class="small text-muted">Tim peserta meraih juara 2 lomba olimpiade matematika.</p>
+          <p class="small text-muted">Tim peserta meraih juara 1 lomba baca puisi.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-edu p-3">
+          <h6>Ulasan Positif</h6>
+          <p class="small text-muted">Belajar disini buat aku lebih paham.</p>
+           <p class="small text-muted">Mudah di akses kallo belajar gunakan website ini.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-edu p-3">
+          <h6>Penambahan Modul</h6>
+          <p class="small text-muted">Ditambahkan modul literasi digital dari https://kemendikdasmen.go.id/.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontak Media Sosial — Akademi Rumah Araa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root{--sky:#7ec8f2;--accent:#0d6efd}
+    body{background:linear-gradient(180deg,#f7fbff,white);font-family:system-ui,-apple-system,Segoe UI,Roboto}
+    .social-card{border-radius:12px;box-shadow:0 6px 20px rgba(2,48,71,0.06);transition:transform .18s ease,box-shadow .18s ease}
+    .social-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(2,48,71,0.12)}
+    .icon-wrap{width:72px;height:72px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px}
+    .icon-instagram{background:linear-gradient(45deg,#feda75,#d62976);color:white}
+    .icon-whatsapp{background:#25D366;color:white}
+    .icon-email{background:#6c757d;color:white}
+    .icon-twitter{background:#1DA1F2;color:white}
+    .icon-facebook{background:#1877F2;color:white}
+    .username{font-weight:600}
+    .small-muted{color:#6b7280;font-size:.9rem}
+  </style>
+</head>
+<body>
+<div class="container py-5">
+  <h2 class="mb-4">Hubungi Kami — Media Sosial</h2>
+  <p class="text-muted">Klik ikon atau tombol untuk membuka masing-masing akun. Semua kontak ditampilkan rapi per kolom.</p>
+
+  <div class="row g-3">
+    <!-- Instagram -->
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card social-card p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <div class="icon-wrap icon-instagram"><i class="bi bi-instagram"></i></div>
+          <div>
+            <div class="small text-uppercase text-muted">Instagram</div>
+            <div class="username">@akademirumaharaa</div>
+            <div class="small-muted">Foto & cerita kegiatan</div>
+          </div>
+        </div>
+        <div class="mt-3 text-end">
+          <a href="https://instagram.com/akademirumaharaa" target="_blank" class="btn btn-outline-primary btn-sm">Buka Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card social-card p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <div class="icon-wrap icon-whatsapp"><i class="bi bi-whatsapp"></i></div>
+          <div>
+            <div class="small text-uppercase text-muted">WhatsApp</div>
+            <div class="username">+62 812-3456-7890</div>
+            <div class="small-muted">Hubungi untuk pendaftaran & info cepat</div>
+          </div>
+        </div>
+        <div class="mt-3 text-end">
+          <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-outline-success btn-sm">Chat di WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card social-card p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <div class="icon-wrap icon-email"><i class="bi bi-envelope-fill"></i></div>
+          <div>
+            <div class="small text-uppercase text-muted">Email</div>
+            <div class="username">AraaRumahAkademi@gmail.com</div>
+            <div class="small-muted">Untuk pertanyaan resmi dan kerja sama</div>
+          </div>
+        </div>
+        <div class="mt-3 text-end">
+          <a href="mailto:AraaRumahAkademi@gmail.com" class="btn btn-outline-secondary btn-sm">Kirim Email</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Twitter -->
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card social-card p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <div class="icon-wrap icon-twitter"><i class="bi bi-twitter"></i></div>
+          <div>
+            <div class="small text-uppercase text-muted">Twitter</div>
+            <div class="username">@AraaLearning</div>
+            <div class="small-muted">Berita singkat & pengumuman</div>
+          </div>
+        </div>
+        <div class="mt-3 text-end">
+          <a href="https://twitter.com/AraaLearning" target="_blank" class="btn btn-outline-info btn-sm">Buka Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Facebook -->
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card social-card p-3 h-100">
+        <div class="d-flex align-items-center gap-3">
+          <div class="icon-wrap icon-facebook"><i class="bi bi-facebook"></i></div>
+          <div>
+            <div class="small text-uppercase text-muted">Facebook</div>
+            <div class="username">Akademi Rumah Araa</div>
+            <div class="small-muted">Album foto & artikel panjang</div>
+          </div>
+        </div>
+        <div class="mt-3 text-end">
+          <a href="https://facebook.com/akademirumaharaa" target="_blank" class="btn btn-outline-primary btn-sm">Buka Facebook</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-4 text-muted small">Catatan: Ganti username/link sesuai akun resmi Akademi Rumah Araa jika berbeda.</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+  <section id="kontak" class="mb-5">
+    <h3>Kritik & Saran</h3>
+    <div class="card p-3 card-edu">
+      <form id="feedbackForm">
+        <div class="row g-3">
+          <div class="col-md-4"><input required name="nama" class="form-control" placeholder="Nama Pengirim"></div>
+          <div class="col-md-4"><input required name="email" type="email" class="form-control" placeholder="Email"></div>
+          <div class="col-md-4"><input name="subjek" class="form-control" placeholder="Subjek (opsional)"></div>
+          <div class="col-12"><textarea required name="pesan" class="form-control" rows="4" placeholder="Kritik & Saran"></textarea></div>
+          <div class="col-12 text-end"><button type="submit" class="btn btn-primary">Kirim</button></div>
+        </div>
+      </form>
+      <div id="feedbackMsg" class="mt-3"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="mt-4">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div>
+      <strong>Zahra Makkayla</strong><br>
+      Pengelola Akademi Biru Langit
+    </div>
+    <div class="text-end small text-muted">© <span id="year"></span> Akademi Biru Langit — Semua hak cipta dilindungi.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Voice search (Web Speech API)
+  const voiceBtn = document.getElementById('voiceBtn');
+  const searchInput = document.getElementById('searchInput');
+  let recognition;
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'id-ID';
+    recognition.onresult = (e)=>{
+      const transcript = e.results[0][0].transcript;
+      searchInput.value = transcript;
+    }
+  } else {
+    if(voiceBtn) voiceBtn.title = 'Browser tidak mendukung voice search';
+  }
+  if(voiceBtn) voiceBtn.addEventListener('click', ()=>{ if(recognition) recognition.start(); });
+
+  // Camera capture
+  const camBtn = document.getElementById('camBtn');
+  const cameraArea = document.getElementById('cameraArea');
+  const video = document.getElementById('video');
+  const capture = document.getElementById('capture');
+  const snapshot = document.getElementById('snapshot');
+  const closeCam = document.getElementById('closeCam');
+  let stream;
+
+  if(camBtn) camBtn.addEventListener('click', async ()=>{
+    cameraArea.classList.remove('d-none');
+    try{ stream = await navigator.mediaDevices.getUserMedia({video:true}); video.srcObject = stream; }
+    catch(e){ alert('Tidak dapat mengakses kamera: '+e.message); }
+  });
+  if(capture) capture.addEventListener('click', ()=>{
+    const ctx = snapshot.getContext('2d');
+    snapshot.width = video.videoWidth; snapshot.height = video.videoHeight;
+    ctx.drawImage(video,0,0,snapshot.width,snapshot.height);
+    searchInput.value = '[Gambar tertangkap — gunakan untuk pencarian]';
+  });
+  if(closeCam) closeCam.addEventListener('click', ()=>{ cameraArea.classList.add('d-none'); if(stream){ stream.getTracks().forEach(t=>t.stop()); } });
+
+  // Simple search action (demo)
+  const searchBtn = document.getElementById('searchBtn');
+  if(searchBtn) searchBtn.addEventListener('click', ()=>{
+    const q = searchInput.value.trim();
+    if(!q){ alert('Masukkan kata kunci pencarian.'); return; }
+    alert('Mencari: '+q+'\n(Fitur pencarian memerlukan backend untuk hasil nyata)');
+  });
+
+  // Feedback submit (demo — tidak mengirim ke server)
+  const feedbackForm = document.getElementById('feedbackForm');
+  const feedbackMsg = document.getElementById('feedbackMsg');
+  if(feedbackForm) feedbackForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const data = new FormData(feedbackForm);
+    feedbackMsg.innerHTML = '<div class="alert alert-success">Terima kasih, '+(data.get('nama')||'Pengguna')+'! Saran Anda telah diterima.</div>';
+    feedbackForm.reset();
+  });
+</script>
+</body>
+</html>
